@@ -1,0 +1,184 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/* ============================================
+   ITI ITI YOGASHRAM — Lunar Night theme
+   Palette: deep indigo-night sky, moonstone silver,
+   soft antique gold moonlight, quiet lavender haze.
+   ============================================ */
+
+@theme inline {
+  --color-cream: #0B0E1D;
+  --color-warm-white: #10142A;
+  --color-forest: #EDEFF7;
+  --color-sage: #9C8FE8;
+  --color-sage-light: #B9AEF2;
+  --color-terra: #D8B876;
+  --color-terra-light: #E8CE9C;
+  --color-gold: #D8B876;
+  --color-leaf: #171B36;
+  --color-leaf-mid: #262C52;
+  --color-text: #E8EAF6;
+  --color-muted: #8990B8;
+  --color-brand-border: #2B3160;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
+}
+
+:root {
+  /* base surfaces */
+  --cream: #0B0E1D;        /* deepest night sky — primary background */
+  --warm-white: #10142A;   /* elevated panel surface */
+  --night: #060812;        /* void, used for deep overlays */
+  --dusk: #171B36;         /* card surface */
+
+  /* ink / text, inverted from the old light palette */
+  --forest: #EDEFF7;       /* headline / high-emphasis text (moonstone white) */
+  --text: #E8EAF6;         /* body text */
+  --muted: #8990B8;        /* secondary text, "starlight haze" */
+
+  /* accents */
+  --sage: #9C8FE8;         /* lavender starlight — links/secondary accent */
+  --sage-light: #B9AEF2;
+  --terra: #D8B876;        /* moonlight gold — primary accent */
+  --terra-light: #E8CE9C;
+  --gold: #D8B876;
+
+  --leaf: #171B36;         /* soft panel tint */
+  --leaf-mid: #262C52;     /* hover / mid panel tint */
+  --border: #262C52;       /* hairline border, "twilight seam" */
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Jost", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(216, 184, 118, 0.5);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, h4 { font-family: "Cormorant Garamond", serif; color: var(--forest); }
+
+.font-serif { font-family: "Cormorant Garamond", serif; }
+.font-sans { font-family: "Jost", sans-serif; }
+
+/* ---------- Ambient night sky ---------- */
+.lunar-sky {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 82% 8%, rgba(216,184,118,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 100%, rgba(156,143,232,0.10) 0%, transparent 65%),
+    var(--cream);
+}
+.lunar-sky .star {
+  position: absolute;
+  background: #F4F1FF;
+  border-radius: 50%;
+  animation: twinkle 4.5s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+.lunar-sky .moon-glow {
+  position: absolute;
+  top: 100px;
+  right: 8%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #FBF6E8 0%, #E9DDBA 45%, #C9AE72 75%, transparent 78%);
+  box-shadow: 0 0 90px 25px rgba(216,184,118,0.22), 0 0 200px 80px rgba(216,184,118,0.08);
+  opacity: 0.85;
+}
+.lunar-sky .moon-glow::after {
+  content: '';
+  position: absolute;
+  top: 8%; left: 55%;
+  width: 78%; height: 78%;
+  border-radius: 50%;
+  background: var(--cream);
+  opacity: 0.9;
+}
+
+/* content sits above the sky layer */
+#root, main, nav, footer { position: relative; z-index: 1; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, var(--terra), #B9954E);
+  color: var(--night);
+  padding: 12px 24px; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.03em;
+  transition: box-shadow .25s, transform .2s;
+  cursor: pointer; border: none;
+  box-shadow: 0 0 0 rgba(216,184,118,0);
+}
+.btn-primary:hover { box-shadow: 0 0 24px rgba(216,184,118,0.45); transform: translateY(-2px); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1.5px solid var(--border); color: var(--forest); background: rgba(255,255,255,0.02);
+  padding: 11px 22px; border-radius: 50px;
+  font-size: 0.9rem; font-weight: 500;
+  transition: border-color .25s, background .25s, transform .2s;
+  cursor: pointer;
+}
+.btn-outline:hover { border-color: var(--sage); background: rgba(156,143,232,0.1); transform: translateY(-2px); }
+
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--terra); margin-bottom: 14px;
+}
+.section-label::before {
+  content: '☾'; font-size: 0.95rem; line-height: 1;
+  color: var(--terra); display: inline-block;
+}
+.section-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600; color: var(--forest); line-height: 1.15;
+}
+.section-title em { font-style: italic; font-weight: 300; color: var(--terra); }
+
+.field {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  background: var(--warm-white); font-size: 0.95rem; color: var(--text);
+  font-family: inherit; transition: border-color .2s;
+}
+.field::placeholder { color: var(--muted); }
+.field:focus { outline: none; border-color: var(--sage); }
+textarea.field { min-height: 120px; resize: vertical; }
+
+.card {
+  background: var(--dusk);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 60px -30px rgba(0,0,0,0.6);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp .7s ease both; }

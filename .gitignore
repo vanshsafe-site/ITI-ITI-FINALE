@@ -1,0 +1,52 @@
+# Environment files
+.env
+.env.*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency directories
+node_modules/
+.pnpm-store/
+ bun_modules/
+
+# Bun artifacts
+.bun/
+
+# Lock files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+
+# Local editor settings
+.vscode/
+.idea/
+.DS_Store
+
+# System files
+Thumbs.db
+ehthumbs.db
+
+# Generated files
+*.log
+*.tmp
+*.temp
+*.swp
+
+# Storybook / test output
+coverage/
+
+# Misc
+.env.local.example
+
+# Optional: keep package-lock or bun.lock if desired
+# If you use Bun, keep bun.lockb under source control and ignore package-lock.json
+# If you use npm, keep package-lock.json and ignore bun.lockb

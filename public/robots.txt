@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard
+Disallow: /auth
+Disallow: /upload-documents
+
+Sitemap: https://itiitiyogashram.vercel.app/sitemap.xml
